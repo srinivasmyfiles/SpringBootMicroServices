@@ -1,0 +1,5 @@
+CREATE TABLE `springcore`.`contactsbook` (
+  `cont_id` INT NOT NULL,
+  `cont_name` VARCHAR(45) NULL,
+  `cont_addrs` VARCHAR(45) NULL,
+  PRIMARY KEY (`cont_id`));
