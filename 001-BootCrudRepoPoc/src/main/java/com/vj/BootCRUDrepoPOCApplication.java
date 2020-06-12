@@ -1,5 +1,6 @@
 package com.vj;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.boot.SpringApplication;
@@ -16,7 +17,6 @@ public class BootCRUDrepoPOCApplication {
 
 		ConfigurableApplicationContext ctxt = SpringApplication.run(BootCRUDrepoPOCApplication.class, args);
 
-
 		/*
 		here it will use the implementation class ContactsBookEntity as we passed 
 		it to ContactsBookRepo  
@@ -31,9 +31,8 @@ public class BootCRUDrepoPOCApplication {
 
 		//________________________________________________________________________________________________		
 
-
 		/*
- 		ContactsBookEntity entity = new ContactsBookEntity();
+		ContactsBookEntity entity = new ContactsBookEntity();
 		entity.setContactId(225);
 		entity.setContactName("Rani");
 		entity.setContactNumber(995123L);
@@ -42,42 +41,57 @@ public class BootCRUDrepoPOCApplication {
 
 		System.out.println(bean.save(entity));
 		 */
-		//		save(Entity) method will UPDATE the given entity record if PK given is not exist in the table
-		//		if PK given does not exist, it will INSERT the record
+		//		save(Entity) method will UPDATE the given entity record if PK given is EXIST in the table
+		//		if PK given does NOT EXIST, it will INSERT the record
+
+		//________________________________________________________________________________________________		
+		/*
+				//select * from contactsbook;
+				Iterable<ContactsBookEntity> entities = bean.findAll();
+				entities.forEach(entity->{
+					System.out.println(entity);
+				});
+		 */
 
 		//________________________________________________________________________________________________		
 
+		/*  //need to work on this tomorrow
+		Object[] entities = bean.findAllContactNameAndContactNumber();
+		System.out.println(entities);
+		for (Object entity : entities) {
+			System.out.println(entity.toString());
+		}
 
+		 */
 
 		//________________________________________________________________________________________________		
 		/*
 
-	//select * from contactsbook where cont_name=?;
+		//select * from contactsbook where cont_name=?;
 
 					ContactsBookEntity entity1 = bean.findByContactName("Vijay");
 					System.out.println(entity1);
 
-	//select * from contactsbook where cont_id=?;
+		//select * from contactsbook where cont_id=?;
 
 					ContactsBookEntity entity2 = bean.findByContactId(333);
 					System.out.println(entity2);
 
-	//select * from contactsbook where cont_number=?;
+		//select * from contactsbook where cont_number=?;
 
 					ContactsBookEntity entity3 = bean.findByContactNumber(555l);
 					System.out.println(entity3);
 		 */
 
-
 		/*
-	//select * from contactsbook where cont_name=? and cont_num=?;
+		//select * from contactsbook where cont_name=? and cont_num=?;
 
 				ContactsBookEntity entity4 = bean.findByContactNameAndContactNumber("aaa", 111L);
 				if(entity4==null)
 					System.out.println("No record found with the given data");
 				else
 					System.out.println(entity4);
-		 */		
+		 */
 
 		//________________________________________________________________________________________________		
 
@@ -99,7 +113,7 @@ public class BootCRUDrepoPOCApplication {
 				for(ContactsBookEntity entity : entities2) { System.out.println(entity); }
 		//		entities2.forEach(entity -> { System.out.println(entity); });
 
-		 */		
+		 */
 
 		//________________________________________________________________________________________________		
 
@@ -107,23 +121,25 @@ public class BootCRUDrepoPOCApplication {
 				//select * from contactsbook where cont_name like 'v%';
 				Iterable<ContactsBookEntity> entities3 = bean.findByContactNameStartsWith("v");
 				entities3.forEach(entity -> {  System.out.println(entity);  });
-		 */			
+		 */
 
 		//________________________________________________________________________________________________		
 
-		//select * from contactsbook where cont_age>18 and active_switch='Y';
+		/*
+		 //select * from contactsbook where cont_age>18 and active_switch='Y';
 		Iterable<ContactsBookEntity> entities4 = bean.findByContactAgeGreaterThanAndActiveSwitchIs(18, "Y");
 		entities4.forEach(entity -> { System.out.println(entity);	});
+
+		 */
 
 		//________________________________________________________________________________________________		
 
 		/*
 		//delet from contactsbook where cont_id=225;
 				bean.deleteById(225);
-		 */		
+		 */
 
 		//________________________________________________________________________________________________		
-
 
 		/*
 		  Iterable<ContactsBookEntity> entities = bean.findAll();
@@ -138,7 +154,7 @@ public class BootCRUDrepoPOCApplication {
 				entities.forEach(entity -> {
 					System.out.println(entity);
 				});
-		 */		
+		 */
 
 		//________________________________________________________________________________________________		
 
