@@ -16,26 +16,26 @@ public class MainController {
 	@RequestMapping("/")	//default url pattern
 	public ModelAndView showHome() {
 
-		ModelAndView model=new ModelAndView();
-		model.addObject("wish", "This is a wish messenger !!! ").setViewName("wish");
-		return model;
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("wish", "This is a wish messenger !!! ").setViewName("wish");
+		return mav;
 	}
 	
 	@RequestMapping("/morning")
 	public ModelAndView wishMorning() {
 		//create ModelAndView Object to add attributeName, Object
-		ModelAndView model=new ModelAndView();
+		ModelAndView mav=new ModelAndView();
 		//add attrib name and Object repectively and set the View name
-		model.addObject("wish", "Good morning, have a great day ahead !! ").setViewName("wish");
+		mav.addObject("wish", "Good morning, have a great day ahead !! ").setViewName("wish");
 		//return ModelAndView obj
-		return model;
+		return mav;
 	}
 
 	@RequestMapping("/afternoon")
 	public ModelAndView wishAfternoon() {
-		ModelAndView model = new ModelAndView();
-		model.addObject("wish", "Good afternoon fellas !!!").setViewName("wish");
-		return model;
+		ModelAndView mav= new ModelAndView();
+		mav.addObject("wish", "Good afternoon fellas !!!").setViewName("wish");
+		return mav;
 	}
 
 	//	here, Using ModelAndView in the code makes our code tightly coupled/bound to Spring Framework
