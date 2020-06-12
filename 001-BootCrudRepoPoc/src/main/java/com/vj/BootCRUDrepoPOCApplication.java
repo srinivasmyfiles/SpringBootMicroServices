@@ -33,6 +33,24 @@ public class BootCRUDrepoPOCApplication {
 
 
 		/*
+ 		ContactsBookEntity entity = new ContactsBookEntity();
+		entity.setContactId(225);
+		entity.setContactName("Rani");
+		entity.setContactNumber(995123L);
+		entity.setContactAge(30);
+		entity.setActiveSwitch("N");
+
+		System.out.println(bean.save(entity));
+		 */
+		//		save(Entity) method will UPDATE the given entity record if PK given is not exist in the table
+		//		if PK given does not exist, it will INSERT the record
+
+		//________________________________________________________________________________________________		
+
+
+
+		//________________________________________________________________________________________________		
+		/*
 
 	//select * from contactsbook where cont_name=?;
 
@@ -84,19 +102,19 @@ public class BootCRUDrepoPOCApplication {
 		 */		
 
 		//________________________________________________________________________________________________		
-		
+
 		/*
 				//select * from contactsbook where cont_name like 'v%';
 				Iterable<ContactsBookEntity> entities3 = bean.findByContactNameStartsWith("v");
 				entities3.forEach(entity -> {  System.out.println(entity);  });
-		*/			
-		
+		 */			
+
 		//________________________________________________________________________________________________		
-		
+
 		//select * from contactsbook where cont_age>18 and active_switch='Y';
 		Iterable<ContactsBookEntity> entities4 = bean.findByContactAgeGreaterThanAndActiveSwitchIs(18, "Y");
 		entities4.forEach(entity -> { System.out.println(entity);	});
-		
+
 		//________________________________________________________________________________________________		
 
 		/*
@@ -139,22 +157,6 @@ public class BootCRUDrepoPOCApplication {
 				}
 
 		 */
-
-		//________________________________________________________________________________________________		
-
-
-		/*
-		 		ContactsBookEntity entity = new ContactsBookEntity();
-				entity.setContactId(225);
-				entity.setContactName("Rani");
-				entity.setContactNumber(995123L);
-				entity.setContactAge(30);
-				entity.setActiveSwitch("N");
-
-				System.out.println(bean.save(entity));
-		 */
-		//		save(Entity) method will UPDATE the given entity record if PK given is not exist in the table
-		//		if PK given does not exist, it will INSERT the record
 
 		//________________________________________________________________________________________________		
 
