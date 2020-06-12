@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class MainController {
 	/*
 		Note : We are using same View(wish.jsp) with different URL mapped to different Model and View data
-		We can say this is a Multi-Action-Controller
+		We can call this as a Multi-Action-Controller
 	 */	
 	
 	@RequestMapping("/")	//default url pattern
