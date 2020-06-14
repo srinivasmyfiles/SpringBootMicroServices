@@ -3,6 +3,7 @@ package com.vj.controllers;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -45,12 +46,17 @@ public class MainController {
 		map.put("wish", "Good evening peeps !!!");
 		return "wish";
 	}
-
+ 
 	@RequestMapping("/night")
 	public String wishNight(Map<String,Object> map) {
 		map.put("wish", "Good night, watch some movies !!!");
 		return "wish";
 	}
 
+	@RequestMapping("/gnight")
+	public String wishGnight(Model model) {
+		model.addAttribute("wish", "Good night, sleep off !!!");
+		return "wish";
+	}
 
 }

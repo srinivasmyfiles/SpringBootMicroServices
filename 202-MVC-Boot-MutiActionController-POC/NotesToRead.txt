@@ -194,4 +194,71 @@ Request Execution Flow In Spring MVC Application
 
 10) DispatcherServlet will send response back for the recieved request
 
+------------------------------------------------------------
+-> When we create SB application by default start class will be provided
 
+-> In Spring Boot, web app execution also will start from main method
+
+-> For developing web apps using Spring Boot, we need web starter
+
+-> web starter provides support for mvc, rest api and embedded container
+
+-> Spring Boot will provide Apache tomcat as embedded container
+
+-> In spring boot, default port no for embedded container is 8080
+
+-> To change server port in SPringBoot we can use below property
+
+		server.port = 9090
+
+-> By Default Spring Boot will not consider Project Name in URL (   Context-Path)
+
+-> Every method in controller should have unique url-pattern
+
+
+
+
+
+----------------------HomeController----------------------------------
+@Controller
+public class HomeController {
+
+	@RequestMapping("/home")
+	public String displayHomePage(Model model) {
+		model.addAttribute("msg", "This is home page0");
+		return "homePage";
+	}
+}
+
+URL to access : http://localhost:8082/07-SB-MultiController-Web-App/home
+
+-------------------------DateController------------------------------
+@Controller
+public class DateController {
+
+	@RequestMapping("/date")
+	public ModelAndView displayDate() {
+		ModelAndView mav = new ModelAndView();
+		String msgTxt = "Hello, Today's date : " + new Date();
+		mav.addObject("msg", msgTxt);
+		mav.setViewName("displayDate");
+		return mav;
+	}
+}
+
+URL to accesss: http://localhost:8082/07-SB-MultiController-Web-App/date
+
+-------------------------------------------------------------------------
+
+Note : By default embedded cotainer wil not consider projectname in URL
+
+-> If you add project name then we can't access resources
+
+How to add Context-Path in Spring Boot application?
+----------------------------------------------------
+
+server.servlet.context-path=/App
+
+Note: If we add this context-path, then it is mandatory to specify in URL to access resources.
+
+Note: Context path willstart with / and it should not end with /
