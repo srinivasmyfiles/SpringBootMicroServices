@@ -81,17 +81,29 @@ public interface ContactsBookRepo extends CrudRepository<ContactsBookEntity, Ser
 
 	//select * from contactsbook
 	//	@Query(" from ContactsBookEntity ")
-	public Iterable<ContactsBookEntity> findAll();
+	//	public Iterable<ContactsBookEntity> findAll();
 
 	//	_________________________________________________________________________________
 
-	/*
-	 //select cont_name,cont_number from contactsbook
+
+	//select cont_name,cont_number from contactsbook
 	@Query(" select contactName,contactNumber from ContactsBookEntity ")
-	public Object[] findAllContactNameAndContactNumber();
+	public Iterable<Object[]> findAllContactNameAndContactNumber();
 
-	 */
+	//	_________________________________________________________________________________
 
+	//NOTE : when using Custom Queries method can be anything, HQL must be proper
 
+	//select * from contactsbook where active_switch='Y' or cont_age >25;
+	@Query( "from ContactsBookEntity where activeSwitch='y' or contactAge between 25 and 75 ")
+	public Iterable<ContactsBookEntity> findAllbyActiveSwitchOrContactAge();
+
+	//	_________________________________________________________________________________
+	//JDBC uses positional parameter, we need to manitain order and datatype must match
+	//but Data supports Name Positional Parameters also, readability, 
+	//	no hardcoding of values and no order has to be maintained
+	
+	@Query(" from ContactsBookEntity where contactName =:name ")
+	public Iterable<ContactsBookEntity> getAllBy(String name);
 
 }

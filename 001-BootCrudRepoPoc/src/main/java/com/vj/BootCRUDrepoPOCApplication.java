@@ -55,14 +55,28 @@ public class BootCRUDrepoPOCApplication {
 
 		//________________________________________________________________________________________________		
 
-		/*  //need to work on this tomorrow
-		Object[] entities = bean.findAllContactNameAndContactNumber();
-		System.out.println(entities);
-		for (Object entity : entities) {
-			System.out.println(entity.toString());
-		}
+		/*  //select cont_name,cont_number from contactsbook
+		Iterable<Object[]> entities = bean.findAllContactNameAndContactNumber();
+			for (Object[] entity : entities) {
+				System.out.println(entity[0]+"..."+entity[1]);
+			}*/
 
+		//________________________________________________________________________________________________		
+		//NOTE : when using Custom Queries method can be anything
+		//select * from contactsbook where active_switch='Y' or cont_age between 25 and 75;
+		
+		/*Iterable<ContactsBookEntity> entities = bean.findAllbyActiveSwitchOrContactAge();
+		 for (ContactsBookEntity entity: entities) {
+			System.out.println(entity);
+		}
 		 */
+		 //________________________________________________________________________________________________		
+		 
+//		from ContactsBookEntity where contactName =:name " ;
+		 Iterable<ContactsBookEntity> entities = bean.getAllBy("aaa");
+		 for (ContactsBookEntity entity: entities) {
+			System.out.println(entity);
+		}
 
 		//________________________________________________________________________________________________		
 		/*
