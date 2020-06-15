@@ -1,0 +1,167 @@
+
+select * from contacts_master where contact_num=?
+
+from ContactsMasterEntity where contactNum=:num
+
+public interface ContactsMasterRepo extends CrudRepository{
+
+     @Query("from ContactsMasterEntity where contactNumber=:phno)
+     public ContactMasterEntity findByContactNumber(Long phno);
+}
+
+Assignment
+-----------
+1) Update a record using Custom query
+
+2) Delete a record using custom query
+
+3) Insert a record using custom query
+
+JpaRepository
+-------------
+In Spring Data JPA we have 2 predefined repository interfaces
+
+1) CrudRepository (Crud operation)
+
+2) JpaRepository (Crud operations + Pagination + Sorting + QBE)
+
+-> JpaRepository interface is superior to CrudRepository interface
+
+-> When we compare these two JpaRepository having more functinalities than CrudRepository
+
+
+-> CrudRepository extending properties from Repository interface
+
+-> CrudRepository interface provided 11 methods
+
+-> JpaRepository extending prperties from below 2 interfaces
+		1)PagingAndSortingRepository
+		2)QueryByExampleExecutor
+
+
+-> When we use jpa repository we can call findAll( ) method in below ways
+
+	findAll(); // retrive all records
+	findAll(Sort); //retrive all based on sort
+	findAll(Pageble); //retrive records based on page
+
+
+if(priceLowToHigh){
+  List<ContactsMasterEntity> list = repo.findAll(Sort.by("productPrice").ascending());
+} else if(priceHighToLow){
+    List<ContactsMasterEntity> list = repo.findAll(Sort.by("productPrice").decending());
+}else{
+   List<ContactsMasterEntity> list = repo.findAll();
+}
+
+---------------------------------------------------------------------------
+
+
+
+-> CrudRepoisitory & JpaRepository are predefind interfaces available in Spring Data JPA
+
+-> These interfaces provided several methods to perform Curd Operations
+
+-> Using JpaRepository we can perform Pagination & Sorting also
+
+-> Retriving records using JpaRepository
+-----------------------------------------
+-> To retrieve records from table using JpaRepository, we can use below methods
+
+		findAll ( ) --> Retrieves all records
+
+		findAll(Sort) --> Retrieve records based on order by clause
+
+		syntax : repo.findAll(Sort.by("propertyName"))
+		syntax : repo.findAll(Sort.by("propertyName").descending())
+
+		Note: Sort.by(String... args) ---> we can apply more than one column
+
+		findAll(Pageable) : Used to retrieve records based on pagination
+
+What is Pagination?
+Why we need Pagination?
+How many ways we can implement Pagination?
+Which type of pagination is recommended in project ?
+Working with Pagination using JpaRepository
+
+-> The process of dividing total records into multiple pages i called pagination
+
+-> Using pagination we can display the data which is really required for user
+
+-> Using Pagination we can save server memory
+
+-> Application looks beautiful
+
+-> More no.of clicks will to application
+
+Ex: Gmail using pagination to display mails
+	Google search engine using pagination to display search results
+	Flipkart loads products using Pagination
+
+
+-> In an application, we can implement pagination in 2 ways
+
+		1) Server side Pagination
+		2) Client side Pagination
+
+
+Server side pagination
+----------------------
+-> In this approach we will retrieve data from database based on page no
+
+-> For every page load DB query will execute to retrieve page specific data
+
+-> To retrive page specific data from table we will use Row Number concept in SQL query
+
+Advantages
+----------
+-> Memory will be saved
+
+Dis-Advantages
+---------------
+-> For every page load db query will execute
+
+Note: If table data is very huge then recommended to implement Server side pagination
+
+
+Client Side pagination
+------------------------
+-> In this approach we will retrieve all records from table at a time and will manage records display at client side
+
+-> There are several JS libraries are available to implement Client Side pagination
+
+Advantages
+----------
+-> Only one time query will execute to retrieve all records from table
+
+Dis-Advantges
+-------------
+-> Server memory will be wasted
+
+Note: If table data is less then we can implement Client Side pagination
+
+
+
+
+
+-> When we are implementing paginatio, first we should decide page size.
+
+-> Page Size means the no.of record should be displayed in a page
+
+		-> Gmail page size : 50 records
+		-> Google page size : 10 records
+		-> Flipkart page size : 17 records  etc..
+
+
+
+Implementing pagination using Data JPA
+--------------------------------------
+		int pageSize = 3;
+		int pageNo = 3; //index starts from zero //pageNo comes dynamiclly from UI
+		
+		PageRequest pageReq = PageRequest.of(pageNo, pageSize);
+		Page<ContactsMasterEntity> pageData = bean.findAll(pageReq);;
+		List<ContactsMasterEntity> list = pageData.getContent();
+		
+	
