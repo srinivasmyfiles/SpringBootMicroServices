@@ -262,3 +262,102 @@ server.servlet.context-path=/App
 Note: If we add this context-path, then it is mandatory to specify in URL to access resources.
 
 Note: Context path willstart with / and it should not end with /
+
+
+-----------------------------------------------------------------
+
+-> When we add @RequestMapping annoation at controller method it will bind by default to 
+   HTTP GET Request. Writing method=RequestMethod.GET is optional
+
+	@RequestMapping("/index")
+	public String index(){
+		//logic
+        }
+		or
+
+	@RequestMapping(value="/index",method=RequestMethod.GET)
+	public String index(){
+		//logic
+        }
+
+-> Note: The above two methods are same
+
+-> One controller method can bind to multiple url patterns like below
+-------------------------------------------------------------------------------
+@Controller
+public class DemoController {
+
+	@RequestMapping(value = { "/", "/index", "/home" })
+	public ModelAndView index() {
+		ModelAndView mav = new ModelAndView();
+
+		// set data to model in key-value format
+		mav.addObject("msg", "Welcome to Spring MVC with Spring Boot..!!");
+
+		// set logical view name
+		mav.setViewName("index");
+
+		return mav;
+	}
+}
+----------------------------------------------------------------------------------
+-> We can send request to above controller method in below ways
+
+	1) http://localhost:<port-no>/
+	2) http://localhost:<port-no>/index
+	3) http://localhost:<port-no>/home
+	
+
+Why we need to bind one method to more than one url-pattern?
+------------------------------------------------------------
+-> When user enters ---> www.facebook.com in browser login page should be displayed
+
+-> when user click on logout --> login page should be displayed
+
+-> Here for different requests we need to process with same logic
+
+-> For this we can write our controller method like below
+
+	@RequestMapping(value={"/", "/index", "/logout"})
+	public String index(){
+		//logic
+	   return "index";
+	}
+----------------------------------------------------------------------------------
+
+-> Every Controller method we should bind to unique url-pattern
+
+-> In below scenario, both methods are binded to HTTP GET request and both are having "/home" as URL-pattern. In this situation DispatcherServlet will get confused which method it has to execute when request comes for "/home"
+	
+	@RequetMapping(value={"/", "/index", "/home"})
+	public String index( )
+
+	@RequestMapping("/home")
+	public String home()
+
+ -> Note: We can bind multiple methods to same url pattern if they are binded to     Different HTTP Request methods
+
+	@RequetMapping(value={"/home"})
+	public String index( )
+
+	@RequestMapping(value="/home",method=RequestMethod.POST)
+	public String home()
+
+-> When multiple developers are working on web layer, there is a possibility to use same url patterns and same http request methods for more than one controller method which results ambiguity problem.
+
+-> To avoid this problem it is recommended to specify URL pattern at class level also along with the method level.
+
+	@Controller
+	@RequestMapping("/demo")
+	public class DemoController {
+			//methods goes here
+	}
+	
+	@Controller\
+	@RequestMapping("/user")
+	public class UserController {										
+	//methods goes here
+	}
+
+
+
