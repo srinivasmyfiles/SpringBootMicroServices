@@ -1,5 +1,5 @@
 
-
+********************************************************************************************
 select * from contacts_master where contact_num=?
 
 from ContactsMasterEntity where contactNum=:num
@@ -55,8 +55,131 @@ if(priceLowToHigh){
    List<ContactsMasterEntity> list = repo.findAll();
 }
 
+********************************************************************************************
+
+To read data from table using JpaRepository we have below methods
+
+findById(Serializable id)
+
+findAllById(Iterable<Serializabe> ids)
+
+findAll ( )
+
+below methods are providing by JpaRepository
+---------------------------------------------
+findAll(Sort s) ---> to sort records
+
+findAll(Pageable p) --> To retrieve page specific records
+
+What is Pagination?
+-------------------
+The total records available in table we will display in multiple pages.
+
+We have seen realtime pagination in below applications
+------------------------------------------------
+Gmail
+Google
+Flipkart
+Amazon etc..
+
+How many ways we can implement pagination?
+-------------------------------------------
+1 - server side
+
+2- client side
+
+Pagination Implementation
+-------------------------
+-> To implement pagination we should decide page size.
+
+-> Page Size represents how many records should be display in each page
+
+-> We should identify how many records are available in table (using count function we can get this)
+
+-> With Page Size and Total Records we should identify no.of pages required
+
+Note: We should not hard code total Pages required in pagination. Always we need to identify total pages based on page Size and total records available in table.
+
+How to calculate total pages required in pagination ?
+-----------------------------------------------------
+
+Formula to calculate totalPages
+-----------------------------------
+totalPages =  totalRecords/pageSize ;
+
+pageSize = 5, 
+
+TC-1 --> totalRecords = 10
+----------------------------
+totalPages = 10/5 => 2 pages
+
+TC-2 ---> totalRecords = 15
+----------------------------
+totalPages = 15/5 => 3 pages
+
+Tc-3 ----> totalRecords = 20
+-----------------------------
+totalPages = 20/5 => 4 pages
+
+TC-4 ----> totalRecords = 22
+----------------------------
+totalPages = 22/5 ==> 4.4 pages --> Formula failed
 
 
+Modified formula
+----------------
+totalPages = (totalRecords/pageSize)
+		   +
+	     (totalRecords%pageSize) > 0 ? 1 : 0;
+
+pageSize = 5
+------------
+TC-01 :  Total Records = 10
+---------------------------
+(10/5) + ( (10%5) > 0 ) ? 1 : 0 
+ 2	+  0  ==> 2 pages 
+
+TC-02 : Total Records = 15
+--------------------------
+(15/5) + ( (15%5) > 0 ) ? 1 : 0
+
+ 3	+  0  => 3 pages
+
+TC-03 : Total Records = 20
+--------------------------
+(20/5) + ( (20%5) > 0 ) ? 1 : 0
+ 
+  4	+  0  ==> 4 pages
+
+TC-4 : Total Records = 22
+--------------------------
+( 22/5 ) + ( (22%5) > 0 ) ? 1 : 0
+
+ 4	 + 1 ==> 5 pages
+
+TC-5 : Total Records = 24
+--------------------------
+( 24/5 ) + ( (24%5) > 0 ) ? 1 : 0
+    4	 +     1 ==> 5 pages
+
+-> When we are working with pagination in Data JPA we need to create Pageable object with below values
+		1) pageNo
+		2) PageSize
+
+Pageable p = PageRequest.of(pageNo, pageSize);
+
+Note: pageNo will come dynamically from UI and pageSize is fixed value
+
+Page pageData  =  repo.findAll(Pageable p)
+int totalPages = pageData.getTotalPages( ) ;
 
 
-
+		int pageSize = 5;
+		int pageNo = 0; //index starts from zero (1st page)
+		
+		PageRequest pageReq = PageRequest.of(pageNo, pageSize);
+		Page<ContactsMasterEntity> pageData = bean.findAll(pageReq);;
+		int totalPages = pageData.getTotalPages();
+		System.out.println("Total Pages Required :: " + totalPages);
+		List<ContactsMasterEntity> list = pageData.getContent();
+********************************************************************************************
