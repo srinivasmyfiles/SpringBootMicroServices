@@ -1,0 +1,59 @@
+
+Topic : Form based applications
+----------------------------------------------
+18-Jun-2020
+----------------------------------------------
+-> In web application we will have several forms
+	
+	Ex : Login, Registration, Forgot Password, Search Form
+
+-> These forms are used to collect data from end user
+
+-> In our web applications we can develop forms using below technolgies
+
+		a) HTML 
+		b) JSP
+		c) JS frameworks
+
+Requirement:
+-------------
+Develop a form with below 4 text fields
+
+	1) Username
+	2) Password
+	3) Email
+	4) Phone Number
+
+Steps to develop First Form Based Application using Spring Boot
+----------------------------------------------------------------
+1) Create Spring Boot starter project with below dependencines
+
+		a)spring-boot-starter-web
+		b)tomact-embed-jasper
+
+2) Create Controller with below methods
+
+		a) loadForm
+		b) handleSubmitBtn
+
+3) Create View Components
+		a) register.jsp (to display form)
+		b) registerSuccess.jsp (to display success msg)
+
+4) Configure below properties in application.yml file
+		a) server port
+		b) view resolver
+		c) context path
+		
+	
+	http://localhost:8081/UserApp 
+		or
+	http://localhost:8081/UserApp/register
+
+-> To capture form data we are using HttpServletRequest object as Controller method parameter
+
+-> Form is binded to POST method, so form data will be sent to server in Request body.
+
+-> To capture form data we are using HttpServletRequest method req.getParameter(String key).
+
+-> To send data from controller to UI we are using Model object
