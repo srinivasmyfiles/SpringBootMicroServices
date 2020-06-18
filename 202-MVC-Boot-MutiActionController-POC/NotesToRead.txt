@@ -353,7 +353,7 @@ Why we need to bind one method to more than one url-pattern?
 			//methods goes here
 	}
 	
-	@Controller\
+	@Controller
 	@RequestMapping("/user")
 	public class UserController {										
 	//methods goes here
