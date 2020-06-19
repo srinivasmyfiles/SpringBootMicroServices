@@ -7,6 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.vj.commands.User;
+
 @Controller
 public class AccountController {
 
@@ -28,6 +30,39 @@ public class AccountController {
 
 		model.addAttribute("result", " Registration Successful !! ");
 		return "signupresult";
+	}
+
+
+	/**
+	 * HttpServletRequest ---> To capture data coming in Request
+
+	String name = req.getParameter("uname");
+
+-> If we have more fields in form then we should write boiler plate code to capture form data.
+
+-> In application we will have several forms and every form will have several fields then we should 
+	write lot of boiler plate code in our application.
+
+-> To avoid this boiler plate code, Spring MVC provided Form Binding Object mechanism(Command Class).
+	 * 
+	 */
+	@GetMapping(value = "/signup")
+	public String signUpPage() {
+		return "signup";
+	}
+
+	//here User acts as a form binding obj(command cls obj),
+	//	it has the fields with same name as form fields.
+	//DS maps the form fields with Form binding obj properties
+	@PostMapping(value = "signup")
+	public String signUpResult(User user,Model model) {
+
+		System.out.println(user);
+
+		model.addAttribute("result", "Signup Successful");
+
+		return "signupresult";
+
 	}
 
 
