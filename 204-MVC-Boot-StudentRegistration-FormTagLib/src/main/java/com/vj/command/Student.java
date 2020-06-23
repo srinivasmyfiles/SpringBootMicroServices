@@ -10,8 +10,8 @@ public class Student {
 	private String email;					//textbox
 	private String phone;					//textbox
 	private String gender;					//radio buttons
-	private String[] course;				//select list(DropDownList)
-	private String timings;		//checkboxes
+	private String course;				//select list(DropDownList)
+	private String[] timings;		//checkboxes
 	
 	
 }

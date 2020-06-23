@@ -1,0 +1,157 @@
+Student Registration Form Submission
+--------------------------------------------------------------------
+22-Jun-2020
+-------------------------------------------------------------------
+
+-> To simply forms development, Spring MVC module provided form tag library for us.
+
+-> As part of form tag library we are having below tags
+		
+		a)<form:form />
+		b)<form:input/>
+		c)<form:password/>
+		d)<form:radioButton>
+		e)<form:radioButtons/>
+		f)<form:select/>
+		g)<form:option/>
+		h)<form:options/>
+		i)<form:checkbox/>
+		j)<form:checkboxes/> etc...
+
+-> In order to use Spring MVC Form Tag library we need to add Taglib directive in our view component.
+
+Syntax to configure taglib directive
+-------------------------------------
+<%@ taglib uri="http://www.springframework.org/tags/form" 	   	   prefix="form"%>
+		
+-> Spring MVC Form tags will be converted HTML tags in background
+
+-> To load Student Registration Form we have written one method in Controller which is binded to HTTP GET Request
+
+	@Controller
+	public class StudentController{
+		
+		@GetMapping(value={"/","/regStudent"})
+		public String loadForm(Model model){
+		
+                   //form binding class
+		   Student s = new Student( ); 
+
+		   //sending data to view
+		   model.addAttribute("stu",s);
+
+		   //logical view name
+		   return "registerStudent";
+			
+		}
+	}
+
+	<form:form action="" modelAttribute="" method="">
+		Username : <form:input path="uname"/>
+	</form:form>
+
+
+
+Form Submission
+---------------
+-> To submit a form we should write action attribute in form tag.
+
+-> action attribute represents request handler url (controller method url)
+
+-> For Form we should specify method as POST then form data will go server in Request Body
+
+	<form:form method="POST">
+	
+	</form:form>
+
+-> If we don't specify method attribute like above then it will consider as GET Request.
+
+-> If we submit a form with GET request, then form data will be appended to URL (it will be visiable). When we are dealing with sensitive information security will not be avilable.
+
+If we submit a form with GET request below are the drawbacks
+------------------------------------------------------------
+1) Form data will be displayed in URL
+2) Browsers will support upto 1024 characters only in URL
+3) MIME data can't be sent in URL (images, videos and files)
+
+Controller Method to handle form submission
+--------------------------------------------
+@Controller
+public class StudentController{
+	
+    @PostMapping(value="/registerStudent")
+    public String handleRegisterBtn(Student s, Model model){
+	
+         //form data operation (store to db)
+
+	 //send response to UI
+	 model.addAttribute("succmsg","Registration completed");
+
+	return "registerStudent";
+    }
+
+}
+
+*********************************************************************
+@ModelAttribute annotation
+-------------------------------------------
+23-Jun-2020
+-------------------------------------------
+-> For Form submissions we should use POST Request
+
+-> In post request data willbe sent in request body
+
+-> In GET request data will go in URL (not secureD)
+
+
+By Default Embedded Container will not reload the changes made in project
+
+When ever we make a change we need to re-start the server
+
+When we are working on development part, several times we will make code changes. For every code change if we want to restart the server it will take more time (Time waste)
+
+To avoid this problem we can use 'DevTools'
+
+DevTools will reload the changes and will re-start Boot application
+
+To Enable Dev Tools in Spring Boot application, we should add below dependency in pom.xml.
+-----------------------------------------------------------
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-devtools</artifactId>
+</dependency>
+-----------------------------------------------------------
+
+
+What is @ModelAttribute
+----------------------
+-> This is one of the important annotation in Spring MVC module
+
+-> It binds a method parameter or method return value to a named attributed and it exposes that to a view.
+
+This annotation we can use at 2 places
+---------------------------------------
+1) At method level
+------------------
+ @ModelAttribute
+ public void m1(Model model){
+	//set data to model scope
+ }
+
+If a controller having a method with @ModelAttribute annotation then that methdod will be executed for every request
+
+Use case
+--------
+-> To load common values for all views
+
+2) As method parameter
+-----------------------
+@PostMapping("/register")
+public String handleSubmitBtn(@ModelAttribute("student") Student s, 
+							Model model){
+
+     return "lvn";
+}
+
+-> To capture data coming in request into form binding object then we will at method parameter.
+

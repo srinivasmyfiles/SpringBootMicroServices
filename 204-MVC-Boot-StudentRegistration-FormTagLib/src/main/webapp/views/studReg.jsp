@@ -37,8 +37,8 @@
 				</tr>
 				<tr>
 					<th>Gender :</th>
-					<td><form:radiobutton path="gender" />Male <form:radiobutton
-							path="gender" />Female</td>
+					<td><form:radiobutton path="gender" value="Male"/>Male <form:radiobutton
+							path="gender" value="Female"/>Female</td>
 				</tr>
 				<tr>
 					<th>Courses :</th>
@@ -52,9 +52,9 @@
 				</tr>
 				<tr>
 					<th>Suitable Timings :</th>
-					<td><form:checkbox path="timings" value="morning" /> Morning
-						<form:checkbox path="timings" value="noon" /> Afternoon <form:checkbox
-							path="timings" value="evening" /> Evening</td>
+					<td><form:checkbox path="timings" value="Morning" /> Morning
+						<form:checkbox path="timings" value="Noon" /> Afternoon <form:checkbox
+							path="timings" value="Evening" /> Evening</td>
 				</tr>
 				<tr>
 					<td><input type="reset" value="Reset" /></td>
