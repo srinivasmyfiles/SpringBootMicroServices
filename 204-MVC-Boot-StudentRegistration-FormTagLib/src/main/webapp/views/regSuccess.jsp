@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div align="center">
-	<h2 style="color: green"> Regsitration Success, following are your details!!</h2>
+	<h2 style="color: green"> ${result }</h2>
 		<table>
 			<tr>
 				<th>Name :</th>
