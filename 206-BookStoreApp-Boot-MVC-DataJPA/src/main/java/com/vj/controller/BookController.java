@@ -22,16 +22,16 @@ public class BookController {
 	@GetMapping(value = { "/" , "/newBookEntry" } )
 	public String homePage(Model model) {
 
-		BookBinding book1=null;
+		BookBinding emptyBook=null;
 		//empty BookBinding obj to bind form data
-		book1= new BookBinding();
+		emptyBook= new BookBinding();
 		//add obj to Model Attribute
-		model.addAttribute("book", book1);
+		model.addAttribute("book", emptyBook);
 		//return logical view name of home page
 		return "addBook";
 	}
 	
-	@PostMapping("/newBook")
+	@PostMapping("/newBookEntry")
 	public String addBookButton(@ModelAttribute("book") BookBinding book, RedirectAttributes attributes) {
 		//use service to save record
 		boolean bookAdded = service.save(book);

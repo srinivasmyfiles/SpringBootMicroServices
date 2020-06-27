@@ -15,7 +15,7 @@
 	<packaging>war</packaging>
 	<name>206-BookStoreApp-Boot-MVC-DataJPA</name>
 	<description>206-BookStoreApp-Boot-MVC-DataJPA</description>
-
+ 
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>

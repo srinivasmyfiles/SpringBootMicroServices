@@ -22,7 +22,7 @@ table, tr, th, td {
 <body>
 	<div align="center">
 	<h2 style="color:orange;"> ${result } </h2>
-		<form:form action="newBook" modelAttribute="book" method="POST">
+		<form:form action="newBookEntry" modelAttribute="book" method="POST">
 			<table>
 				<tr>
 					<th colspan="2"><h2 style="color: green">Add book details</h2></th>
