@@ -38,23 +38,18 @@
 				<tr>
 					<th>Gender :</th>
 					<td><form:radiobutton path="gender" value="Male"/>Male <form:radiobutton
-							path="gender" value="Female"/>Female</td>
+							path="gender" value="Female" checked="checked"/>Female</td>
 				</tr>
 				<tr>
 					<th>Courses :</th>
 					<td><form:select path="course">
 							<form:option value=""> -select- </form:option>
-							<form:option value=" Java "> Java </form:option>
-							<form:option value=" dotNet "> dotNet </form:option>
-							<form:option value=" CPP "> CPP </form:option>
-							<form:option value=" DS "> DS </form:option>
+							<form:options items="${courses }" ></form:options>
 						</form:select></td>
 				</tr>
 				<tr>
 					<th>Suitable Timings :</th>
-					<td><form:checkbox path="timings" value="Morning" /> Morning
-						<form:checkbox path="timings" value="Noon" /> Afternoon <form:checkbox
-							path="timings" value="Evening" /> Evening</td>
+					<td><form:checkboxes path="timings" items="${timingsList }" />  </td>
 				</tr>
 				<tr>
 					<td><input type="reset" value="Reset" /></td>
