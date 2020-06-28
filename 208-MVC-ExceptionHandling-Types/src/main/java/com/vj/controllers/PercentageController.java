@@ -11,7 +11,7 @@ import com.vj.exceptions.InvalidIdException;
 import com.vj.service.EmployeeService;
 
 @Controller
-public class PhoneNumberController {
+public class PercentageController {
 
 	@Autowired
 	EmployeeService service;
@@ -26,7 +26,7 @@ public class PhoneNumberController {
 	 */
 
 	@GetMapping("/phone")
-	public String givePhoneNumber(@RequestParam("id") String id,Model model) {
+	public String givePercentage(@RequestParam("id") String id,Model model) {
 
 		Double percentage = service.getPercentageById(id);
 			//add the received number to model attribute as key/value
