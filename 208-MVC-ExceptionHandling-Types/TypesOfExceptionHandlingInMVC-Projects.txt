@@ -1,0 +1,60 @@
+
+Exception Handling : Eliminating scenarios of Abnormal Termination of Java Application.
+
+It is helpful to make end-user (who uses our application) understand simple user friendly
+ERROR messages, instead of showing the RAW Exception stack messages. 
+
+Generally in Java, we use following keywords to handle Exception in a Typical Java Application.
+
+1. throw  ( used inside a method / behaviour )                
+	- to throw an Exception.
+
+2. throws ( used along with the method declaration )        
+	- to inform (Method Caller) / JVC(default exception handler) about the possibility 
+		of an exception.
+
+3. try{} ( used inside a BLOCK/Method definition{} ) 
+	- to capture the raised Exception inside the Block of code, and pass to respective Catch{}.
+	
+4. catch{} ( used after try{} )
+	- to catch / handle the Exception raised in the try{}
+
+5. finalize{} ( used along with try{} or try{} and catch{} )
+	- to execute the statements written in this block after try block 
+		**( Executes irrespective of the Exception Raised in try{} is handled or not handled )
+		
+*******************************************************************************************
+
+Exception handling in MVC projects / REST API :
+
+We have 3 approaches since Spring 3.2 release,
+
+1. Controller Based Handler
+ 
+	- @ExceptionHanler(value = Exception.class) used inside @Controller class on a 
+	  method that is meant to handle the raised Exception.
+	  
+	- Specific to one Controller.
+	
+
+2. Global Exception Handler 
+   (Common handler to all the available Controller in the respective Application)
+
+	- We define a class with @Controller & @ControllerAdvice annotations 
+	  and define a method inside with @ExceptionHanler(value = Exception.class)  
+	  method that is meant to handle the raised Exception.
+	  
+	- Common to all Controllers in the Application.
+	
+3. User Defined Exception Handler
+
+	- First create a Class(for e.g. InvalidIdException) extending from RuntimeExcepion, 
+	  and calling super(String) from its 1 parameter(String) constructor.
+	  
+	- Whenever a method Throws this User Defined Exception, 
+	  handle it with @ExceptionHandler(value=InvalidIdException.class).
+	  
+	- We can add the same in Global Exception Handler, which will act as common handler for 
+	all Controllers
+	
+****************************************************************************
