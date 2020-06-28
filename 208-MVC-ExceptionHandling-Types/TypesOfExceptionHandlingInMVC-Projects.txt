@@ -1,4 +1,5 @@
 
+
 Exception Handling : Eliminating scenarios of Abnormal Termination of Java Application.
 
 It is helpful to make end-user (who uses our application) understand simple user friendly
@@ -23,7 +24,7 @@ Generally in Java, we use following keywords to handle Exception in a Typical Ja
 	- to execute the statements written in this block after try block 
 		**( Executes irrespective of the Exception Raised in try{} is handled or not handled )
 		
-*******************************************************************************************
+*****************************************************************
 
 Exception handling in MVC projects / REST API :
 
@@ -46,7 +47,7 @@ We have 3 approaches since Spring 3.2 release,
 	  
 	- Common to all Controllers in the Application.
 	
-3. User Defined Exception Handler
+** User Defined Exception Handler **
 
 	- First create a Class(for e.g. InvalidIdException) extending from RuntimeExcepion, 
 	  and calling super(String) from its 1 parameter(String) constructor.
@@ -56,5 +57,7 @@ We have 3 approaches since Spring 3.2 release,
 	  
 	- We can add the same in Global Exception Handler, which will act as common handler for 
 	all Controllers
+
+3. Handler Exception Resolver : 
 	
-****************************************************************************
+*****************************************************************
