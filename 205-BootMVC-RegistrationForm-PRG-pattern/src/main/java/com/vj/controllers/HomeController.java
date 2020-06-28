@@ -36,7 +36,7 @@ public class HomeController {
 	/**
 	 * 1. This method is for POST request to capture the form data.
 	 * 2. RequestAttributes (flashAttributes) are used to forward the
-	 * model attr ibutes from one request Method to another request Method
+	 * model attributes from one request Method to another request Method
 	 * while redirecting the incoming request.
 	 *  
 	 * @param student
