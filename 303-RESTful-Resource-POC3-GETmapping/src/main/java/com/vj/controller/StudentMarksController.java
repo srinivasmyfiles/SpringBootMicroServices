@@ -19,7 +19,7 @@ public class StudentMarksController {
 	 * @return
 	 */
 	@GetMapping("/vijay")
-	public String studentOne(@RequestParam(value = "rno",required = false,defaultValue = "102") Integer rno) {
+	public String studentOne(@RequestParam(value = "rno", required = false, defaultValue = "102") Integer rno) {
 		if (rno == 101)
 			return " Marks aquired by " + rno + " : 575/600";
 		else
@@ -33,7 +33,7 @@ public class StudentMarksController {
 	 * @return
 	 */
 	@GetMapping("/chandra")
-	public String studentTwo(@RequestParam("rno") Integer rno) { 
+	public String studentTwo(@RequestParam("rno") Integer rno) {
 		if (rno == 105)
 			return " Marks aquired by " + rno + " : 475/600";
 		else
