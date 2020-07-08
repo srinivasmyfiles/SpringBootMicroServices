@@ -19,7 +19,11 @@ public class StudentMarksController {
 	 * @return
 	 */
 	@GetMapping("/vijay")
-	public String studentOne(@RequestParam(value = "rno", required = false, defaultValue = "102") Integer rno) {
+	public String studentOne(
+			@RequestParam(value = "rno", 
+			required = false, 
+			defaultValue = "102"
+			) Integer rno) {
 		if (rno == 101)
 			return " Marks aquired by " + rno + " : 575/600";
 		else
@@ -27,15 +31,20 @@ public class StudentMarksController {
 	}
 
 	/**
-	 * In this method resource, client must pass RequestParam value,
-	 * as the required value is true and there is no Default value as well.
+	 * 1. In this method resource, client must pass rno RequestParam value, and Subject value is
+	 * optional to send.
+	 * 2. The required value for rno defalut is true and there is no Default value as well.
+	 * 3. Passing subject is optional and defalut will be used.
 	 * @param rno
 	 * @return
 	 */
 	@GetMapping("/chandra")
-	public String studentTwo(@RequestParam("rno") Integer rno) {
-		if (rno == 105)
-			return " Marks aquired by " + rno + " : 475/600";
+	public String studentTwo(
+			@RequestParam("rno") Integer rno,
+			@RequestParam(value="sub",required = false,defaultValue = "m1"
+			) String subject) {
+		if (rno == 105 && subject.equalsIgnoreCase("m1"))
+			return " Marks aquired in "+subject+" by " + rno + " : 475/600";
 		else
 			return " Invalid Roll number !";
 	}
