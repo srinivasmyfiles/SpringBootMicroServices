@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/marks")
 public class StudentMarksController {
-
+ 
 	/**
 	 * 1. In this method resource, default required=true. i.e. Client must 
 	 * 		pass value to access the Resource
