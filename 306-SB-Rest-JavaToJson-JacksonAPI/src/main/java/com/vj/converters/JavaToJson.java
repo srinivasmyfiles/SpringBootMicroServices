@@ -1,8 +1,10 @@
 package com.vj.converters;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
 import com.vj.pojo.Student;
 
 public class JavaToJson {
@@ -61,12 +63,20 @@ public class JavaToJson {
 
 	public static void main(String[] args) throws JsonProcessingException {
 
+		convertJavaToJson();
+		convertJavaObjectsToJson();
+
+	}
+
+	private static void convertJavaToJson() throws JsonProcessingException {
 		Student s = new Student();
 
 		s.setStudentId(101);
 		s.setStudentName("Vijay");
 		s.setPrimarySkill("FullStackDeveloper");
+//		s.setStudentAge(25);
 
+		System.out.println(" One Object");
 		System.out.println("Java Format : " + s);
 
 		//		Convert Java Obj to Json format using Jackson API
@@ -77,7 +87,39 @@ public class JavaToJson {
 		//		String jsonString = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(s);		
 
 		System.out.println("Json Format : " + jsonString);
-
 	}
+	
+	private static void convertJavaObjectsToJson() throws JsonProcessingException {
+		
+		Student s1 = new Student();
+		s1.setStudentId(101);
+		s1.setStudentName("Vijay");
+		s1.setPrimarySkill("FullStackDeveloper");
+//		s1.setStudentAge(18);
+		
+		Student s2 = new Student();
+		s2.setStudentId(201);
+		s2.setStudentName("Pavan");
+		s2.setPrimarySkill("Tech");
+		s2.setStudentAge(29);
+		
+		List<Student> studList=new ArrayList<Student>();
+		studList.add(s1);
+		studList.add(s2);
+		 
+		System.out.println("\n\n\n Array of Objects");
+		System.out.println("Java Format : " + studList);
+
+		//		Convert Java Obj to Json format using Jackson API
+		ObjectMapper mapper = new ObjectMapper();
+		//		convert Object to String Json Format
+		String jsonString = mapper.writeValueAsString(studList);
+
+		//writerWithDefaultPrettyPrinter() : to format JSON into lines like format_sql=true
+		//		String jsonString = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(s);		
+
+		System.out.println("Json Format : " + jsonString);
+	}
+	
 
 }
