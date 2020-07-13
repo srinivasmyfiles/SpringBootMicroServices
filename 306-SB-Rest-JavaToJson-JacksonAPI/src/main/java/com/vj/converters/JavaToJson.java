@@ -74,7 +74,7 @@ public class JavaToJson {
 		s.setStudentId(101);
 		s.setStudentName("Vijay");
 		s.setPrimarySkill("FullStackDeveloper");
-//		s.setStudentAge(25);
+		//		s.setStudentAge(25);
 
 		System.out.println(" One Object");
 		System.out.println("Java Format : " + s);
@@ -88,25 +88,25 @@ public class JavaToJson {
 
 		System.out.println("Json Format : " + jsonString);
 	}
-	
+
 	private static void convertJavaObjectsToJson() throws JsonProcessingException {
-		
+
 		Student s1 = new Student();
 		s1.setStudentId(101);
 		s1.setStudentName("Vijay");
 		s1.setPrimarySkill("FullStackDeveloper");
-//		s1.setStudentAge(18);
-		
+		//		s1.setStudentAge(18);
+
 		Student s2 = new Student();
 		s2.setStudentId(201);
 		s2.setStudentName("Pavan");
 		s2.setPrimarySkill("Tech");
 		s2.setStudentAge(29);
-		
-		List<Student> studList=new ArrayList<Student>();
+
+		List<Student> studList = new ArrayList<Student>();
 		studList.add(s1);
 		studList.add(s2);
-		 
+
 		System.out.println("\n\n\n Array of Objects");
 		System.out.println("Java Format : " + studList);
 
@@ -120,6 +120,5 @@ public class JavaToJson {
 
 		System.out.println("Json Format : " + jsonString);
 	}
-	
 
 }

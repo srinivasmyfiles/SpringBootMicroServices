@@ -8,7 +8,7 @@
 	<name>306-SB-Rest-JavaToJson-JacksonAPI</name>
 	<description>306-SB-Rest-JavaToJson-JacksonAPI</description>
 	<dependencies>
- 
+
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
