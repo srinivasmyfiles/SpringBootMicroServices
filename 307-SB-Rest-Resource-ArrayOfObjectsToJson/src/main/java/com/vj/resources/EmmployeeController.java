@@ -52,11 +52,10 @@ public class EmmployeeController {
 
 		if (employeeId == 101)
 			return e1;
-		else if (employeeId == 201) {
+		else if (employeeId == 201)
 			return e2;
-		} else {
+		else
 			return null;
-		}
 	}
 
 	/**
