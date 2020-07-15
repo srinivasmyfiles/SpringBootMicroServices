@@ -1,0 +1,107 @@
+
+Today's session : JAX-B API
+------------------------------------------------
+
+-> XML stands for Extensible Markup Language
+
+-> XML governed by w3c
+
+-> The initial version of xml is 1.0 & current    version of xml is also 1.0
+
+-> XML will reprsent the data in elements
+
+	ex: <id>101</id>
+
+-> One element contains start tag and end tag
+
+-> Every xml will start with prolog
+	
+    <?xml version="1.0" encoding="UTF-8">
+
+-> Prolog represents processing instructions
+
+-> Every XML should contain only one root element
+
+------------------------------------------------
+<?xml version="1.0" encoding="UTF-8">
+<student>
+     <id>101</id>
+     <name>John</name>
+     <rank>101</rank>
+</student>
+------------------------------------------------
+-> In the above xml we have 2 types of elements
+	1) Simple Element
+	2) Compound Element
+
+What is Simple Element?
+-----------------------
+The element which represents data directley is called as Simple Element
+
+Ex: <id>101</id>
+
+What is Compound Element?
+-------------------------
+The Element which represents child elements is called as Compound Element.
+
+ <student>
+	<id>101</id>
+ </student>
+
+-> We can use attributes also in the xml
+
+ex: <book-name type="java">Spring</book-name>
+
+-> XML is intereoperable
+
+What is intereoperability?
+---------------------------
+Language Independent + Platform Independent
+
+->XML is the defacto standard to exchange data among applications in Webservices.
+
+-> SOAP Webservices will support only xml format for exchanging data
+
+-> RESTful services supports for xml and some other formats also like json.
+
+
+
+JAX-B
+------
+-> JAX-B stands for Java Architecture For XML Binding
+
+-> Using JAX-B we can convert java object into xml and xml into java object
+
+Using JAX-B api we will perform mainly 2 operations
+----------------------------------------------------
+1) One Time operation
+
+2) Runtime operations
+
+What is Onetime operations?
+---------------------------
+Onetime Operation means desigining binding classes
+
+Binding class will represent structure of the xml
+
+The java class which represents structure of the xml is called as Binding class.
+
+Note: We will create Binding class only one time.
+
+What are Runtime Operations?
+-----------------------------
+-> Marshalling & Un-Marshalling are called as Runtime operations.
+
+-> The process of converting java object into xml is called as Marshalling
+
+-> The process of converting xml into java object is called as Un-Marshalling.
+
+Note: These operations will happen when the application is running.
+
+-> To perform Runtime operations Binding classes are mandatory.
+
+Working with JAX-B
+-------------------
+-> JAX-B api & its implementation is part of JDK only
+
+-> We no need to add any additional dependencies to work with jax-b.
