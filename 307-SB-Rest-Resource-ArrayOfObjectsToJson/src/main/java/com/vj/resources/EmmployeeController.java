@@ -35,7 +35,7 @@ public class EmmployeeController {
 	 * @param employeeId
 	 * @return
 	 */
-	@GetMapping("/employee/{empId}")
+	@GetMapping(value = { "/employee/{empId}" }, produces = { "application/json", "application/xml" })
 	public Employee getEmployee(@PathVariable("empId") Integer employeeId) {
 
 		Employee e1 = new Employee();
@@ -71,9 +71,11 @@ public class EmmployeeController {
 	 * 1. All these annotations are optional to use based  on requirement.
 	 * 2. Resource method will return JSON data without these annotations too, but
 	 *    the property names will be taken as Json Data keys.
+	 *    
+	 * 
 	 */
 
-	@GetMapping("/employees")
+	@GetMapping(value = { "/employees" }, produces = { "application/json", "application/xml" })
 	public Employees getAllEmployees() {
 
 		List<Employee> empList = new ArrayList<Employee>();
@@ -101,9 +103,31 @@ public class EmmployeeController {
 		empList.add(e3);
 
 		Employees employees = new Employees();
-		employees.setEmployees(empList);
+		employees.setEmployee(empList);
 
 		return employees;
 
 	}
 }
+
+/*
+In Rest Controller, How to return response in Multiple Formats?
+-------------------------------------------------------
+To represent response formats in Rest Controller method we will use produces concept.
+
+@GetMapping(
+value="/student/{sid}',
+produces = {
+     "application/json",
+     "application/xml"
+}
+)
+public Student getStudentById(Integer sid){
+//logic
+return studentObj;
+}
+-------------------------------------------
+
+When method is supporting for multiple response formats like above
+ then clients can choose response format using 'Accept' header.
+*/
