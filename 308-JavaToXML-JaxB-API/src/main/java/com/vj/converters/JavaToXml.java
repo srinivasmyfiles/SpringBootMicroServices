@@ -16,7 +16,7 @@ public class JavaToXml {
 		s.setStudentId(101);
 		s.setStudentName("Manish");
 		s.setStudentCourse("Java");
-
+		s.setSection("a");
 		JAXBContext jaxbContext = JAXBContext.newInstance(Student.class);
 		Marshaller marshaller = jaxbContext.createMarshaller();
 		marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);

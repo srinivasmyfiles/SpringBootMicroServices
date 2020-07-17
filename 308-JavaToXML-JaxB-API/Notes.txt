@@ -58,7 +58,9 @@ What is intereoperability?
 ---------------------------
 Language Independent + Platform Independent
 
-->XML is the defacto standard to exchange data among applications in Webservices.
+->XML is the defacto standard to exchange data among applications 
+in Webservices.
+
 
 -> SOAP Webservices will support only xml format for exchanging data
 
@@ -105,3 +107,44 @@ Working with JAX-B
 -> JAX-B api & its implementation is part of JDK only
 
 -> We no need to add any additional dependencies to work with jax-b.
+
+***17th-Jul**
+
+-> In jax-b we will perform 2 operations
+
+	a) One Time Operation
+		- Designing binding classes
+
+	b) Runtime operations
+		- Marshalling (Java obj ---> XML)
+		- Un-Marshalling (XML --> Java Obj)
+_______________________________________________________________
+To work attributes in xml we will use below annotation in binding class
+
+@XmlAttribute
+private String standard;
+
+Note: If we don't use @XmlAttribute annotation for variable, 
+then it will be considered as child element.
+
+
+In Rest Controller, How to return response in Multiple Formats?
+-------------------------------------------------------
+To represent response formats in Rest Controller method we will 
+use produces concept.
+
+@GetMapping(
+	value="/student/{sid}',
+	produces = {
+	     "application/json",
+	     "application/xml"
+	}
+)
+public Student getStudentById(Integer sid){
+	//logic
+	return studentObj;
+}
+-------------------------------------------
+
+When method is supporting for multiple response formats like 
+above then clients can choose response format using 'Accept' header.
