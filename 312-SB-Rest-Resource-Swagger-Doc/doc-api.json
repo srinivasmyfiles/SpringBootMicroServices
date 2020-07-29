@@ -1,0 +1,183 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"description": "Api Documentation",
+		"version": "1.0",
+		"title": "Api Documentation",
+		"termsOfService": "urn:tos",
+		"contact": {
+			
+		},
+		"license": {
+			"name": "Apache 2.0",
+			"url": "http://www.apache.org/licenses/LICENSE-2.0"
+		}
+	},
+	"host": "localhost:2525",
+	"basePath": "/",
+	"tags": [
+		{
+			"name": "order-rest-controller",
+			"description": "Order Rest Controller"
+		}
+	],
+	"paths": {
+		"/getOrder/{prodId}": {
+			"get": {
+				"tags": [
+					"order-rest-controller"
+				],
+				"summary": "getOrderDetails",
+				"operationId": "getOrderDetailsUsingGET",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/xml",
+					"application/json"
+				],
+				"parameters": [
+					{
+						"name": "prodId",
+						"in": "path",
+						"description": "prodId",
+						"required": true,
+						"type": "integer",
+						"format": "int32"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Order"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/placeOrder": {
+			"post": {
+				"tags": [
+					"order-rest-controller"
+				],
+				"summary": "placeOrderForProduct",
+				"operationId": "placeOrderForProductUsingPOST",
+				"consumes": [
+					"application/xml",
+					"application/json"
+				],
+				"produces": [
+					"application/xml",
+					"application/json"
+				],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "prod",
+						"description": "prod",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/Product"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Order"
+						}
+					},
+					"201": {
+						"description": "Created"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		}
+	},
+	"definitions": {
+		"Order": {
+			"type": "object",
+			"properties": {
+				"color": {
+					"type": "string"
+				},
+				"deliveryAreaCode": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"orderId": {
+					"type": "string"
+				},
+				"orderStatus": {
+					"type": "string"
+				},
+				"payment": {
+					"type": "string"
+				},
+				"prodId": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"prodName": {
+					"type": "string"
+				},
+				"quantity": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"size": {
+					"type": "string"
+				}
+			}
+		},
+		"Product": {
+			"type": "object",
+			"properties": {
+				"paymentType": {
+					"type": "string"
+				},
+				"pinCode": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"prodColor": {
+					"type": "string"
+				},
+				"prodId": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"prodName": {
+					"type": "string"
+				},
+				"prodSize": {
+					"type": "string"
+				},
+				"quantity": {
+					"type": "integer",
+					"format": "int32"
+				}
+			}
+		}
+	}
+}

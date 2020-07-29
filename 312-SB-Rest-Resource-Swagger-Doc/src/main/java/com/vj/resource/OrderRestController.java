@@ -14,6 +14,18 @@ import com.vj.response.Order;
 @RestController
 public class OrderRestController {
 
+	/**
+	 > We need to add Swagger2, Swagger UI dependencies.
+	 > We have to configure a Swagger Class to generate our resource class Documentation.
+	 > we can access swagger ui using
+	 	- server:portno/url/swagger-ui.html
+	 	ex : localhost:2525/swagger-ui.html
+	 > Default url for documentation in JSON format 
+	 	- http://localhost:2525/v2/api-docs ( Check docs-api.json file in this Project)
+	 
+	 * @param pid
+	 * @return
+	 */
 	@GetMapping(value = { "/getOrder/{prodId}" }, produces = { "application/xml", "application/json" })
 	public ResponseEntity<Order> getOrderDetails(@PathVariable("prodId") Integer pid) {
 		Product p1 = new Product();
