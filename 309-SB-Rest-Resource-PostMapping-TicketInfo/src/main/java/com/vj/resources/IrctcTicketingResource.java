@@ -119,13 +119,13 @@ public class IrctcTicketingResource {
 	Who is construcing response at API side?
 	----------------------------------------
 	-> DispatcherServlet
-
+_________________________________________________________________________________________
 	 * @param pDetails
 	 * @return
 	 */
 	@PostMapping(value = "/bookTicket1", produces = { "application/xml", "application/json" }, consumes = {
 			"application/xml", "application/json" })
-	public TicketDetails bookTicket(@RequestBody PassengerDetails pDetails) {
+	public ResponseEntity<TicketDetails> bookTicket(@RequestBody PassengerDetails pDetails) {
 
 		System.out.println(pDetails);
 		TicketDetails ticket = new TicketDetails();
@@ -138,7 +138,7 @@ public class IrctcTicketingResource {
 		ticket.setTo(pDetails.getTo());
 		ticket.setJourneyClass(pDetails.getCoachType());
 
-		return ticket;
+		return new ResponseEntity<TicketDetails>(ticket, HttpStatus.OK);
 
 	}
 	
