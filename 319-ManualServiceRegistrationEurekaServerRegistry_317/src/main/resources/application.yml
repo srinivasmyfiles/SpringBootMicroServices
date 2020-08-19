@@ -1,0 +1,9 @@
+eureka:
+  client:
+    service-url:
+       defaultZone: http://localhost:4545/eureka/
+server:
+  port: 3535
+spring:
+  application:
+    name: NAMEANDAGE-Service
