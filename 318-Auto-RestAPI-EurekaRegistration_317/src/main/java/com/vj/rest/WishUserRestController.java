@@ -41,8 +41,7 @@ public class WishUserRestController {
 	<groupId>org.springframework.cloud</groupId>
 	<artifactId>spring-cloud-starter-openfeign</artifactId>
 	</dependency>
-	 
-	 
+	 -----------------------------
 	 * @param username
 	 * @return
 	 */
