@@ -1,6 +1,8 @@
 server:
   port: 2525
 spring:
+  application:
+    name: STOCK-PRICE-SERVICE
   datasource:
     username: sa
     password: 
