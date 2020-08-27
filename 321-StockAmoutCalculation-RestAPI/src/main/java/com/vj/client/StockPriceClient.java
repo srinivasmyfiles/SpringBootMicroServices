@@ -5,9 +5,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-@FeignClient(name = "STOCK-PRICE", url = "http://localhost:2525")
+@FeignClient(name = "STOCK-PRICE-SERVICE")
 public interface StockPriceClient {
 
-	@GetMapping(value = "/getprice/{company}")
+	@GetMapping(value = "/price/getprice/{company}")
 	public ResponseEntity<Double> getStockPriceOf(@PathVariable("company") String companyName);
 }

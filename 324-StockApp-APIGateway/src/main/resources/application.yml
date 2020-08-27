@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: STOCKAPP-API-GATEWAY
+server:
+  port: 5555    
+zuul:
+  prefix: /api
+  routes:
+    price:
+      path: /price/**
+      service-id: STOCK-PRICE-SERVICE
+    pricecal:
+      path: /pricecalc/**
+      service-id: STOCK-AMOUNT-CALC-SERVICE

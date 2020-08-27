@@ -6,7 +6,8 @@ import org.springframework.web.reactive.function.client.WebClient;
 @Service
 public class StockUiService {
 
-	private static final String END_POINT_URL = "http://localhost:3535/getTotal/{company}/{qntty}";
+	private static final String END_POINT_URL = "http://localhost:5555/api/pricecalc/pricecalc/getTotal/{company}/{qntty}";
+//	private static final String END_POINT_URL = "http://localhost:3535/pricecalc/getTotal/{company}/{qntty}";
 
 	public String getStockPriceTotal(String companyName, Integer quantity) {
 
