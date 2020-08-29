@@ -1,0 +1,8 @@
+server:
+  port: 2525
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+        exclude: 
