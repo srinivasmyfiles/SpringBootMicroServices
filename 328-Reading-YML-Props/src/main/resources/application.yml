@@ -1,0 +1,6 @@
+server:
+  port: 3535
+test:
+  properties:
+    wishMsg: Wish you a great day!
+    byeMsg: Goodbye!
